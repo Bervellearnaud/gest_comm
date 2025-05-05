@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>POS Restaurant - Impression ticket</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="pos-container">
+      <header>
+        <h1>POS Restaurant</h1>
+      </header>
+      <main>
+        <section class="menu">
+          <h2>Menu</h2>
+          <ul id="menu-list" class="menu-list"></ul>
+        </section>
+        <section class="cart">
+          <h2>Panier</h2>
+          <ul id="cart-list" class="cart-list"></ul>
+          <div class="total-container">
+            <span>Total :</span>
+            <span id="total" class="total-amount">0.00 €</span>
+          </div>
+          <button class="btn-print" onclick="printTicket()">
+            🧾 Imprimer le ticket
+          </button>
+        </section>
+      </main>
+    </div>
+
+    <!-- Div cachée pour le ticket d'impression -->
+    <div id="ticket" style="display: none"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
