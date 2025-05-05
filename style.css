@@ -10,7 +10,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .pos-container {
   max-width: 900px;
   margin: 40px auto;
@@ -22,7 +21,6 @@ body {
   flex-direction: column;
   min-height: 600px;
 }
-
 header {
   background: #4a90e2;
   padding: 20px 30px;
@@ -32,7 +30,6 @@ header {
   font-size: 1.8rem;
   letter-spacing: 1px;
 }
-
 main {
   display: flex;
   flex: 1;
@@ -41,7 +38,6 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .menu,
 .cart {
   background: #fafafa;
@@ -53,7 +49,6 @@ main {
   display: flex;
   flex-direction: column;
 }
-
 h2 {
   margin: 0 0 20px;
   font-weight: 700;
@@ -62,7 +57,6 @@ h2 {
   padding-bottom: 8px;
   font-size: 1.4rem;
 }
-
 .menu-list,
 .cart-list {
   list-style: none;
@@ -71,7 +65,6 @@ h2 {
   flex-grow: 1;
   overflow-y: auto;
 }
-
 .menu-list li {
   display: flex;
   align-items: center;
@@ -79,18 +72,15 @@ h2 {
   padding: 12px 0;
   border-bottom: 1px solid #ddd;
 }
-
 .menu-list li:last-child {
   border-bottom: none;
 }
-
 .menu-list .item-name {
   font-weight: 600;
   font-size: 1rem;
   color: #222;
   flex: 1;
 }
-
 .menu-list .item-price {
   width: 70px;
   text-align: right;
@@ -100,7 +90,6 @@ h2 {
   user-select: none;
   font-size: 0.95rem;
 }
-
 .menu-list input[type="number"] {
   width: 65px;
   padding: 6px 10px;
@@ -111,25 +100,16 @@ h2 {
   color: #333;
   transition: border-color 0.3s ease;
   background: white;
-  -moz-appearance: textfield;
 }
-
 .menu-list input[type="number"]:focus {
   outline: none;
   border-color: #1c5dbf;
   box-shadow: 0 0 5px rgba(26, 91, 191, 0.5);
 }
-
-/* Remove arrows in number inputs (Chrome, Safari, Edge) */
 .menu-list input[type="number"]::-webkit-inner-spin-button,
 .menu-list input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-/* Firefox */
-.menu-list input[type="number"] {
-  -moz-appearance: textfield;
 }
 
 .cart-list li {
@@ -141,11 +121,9 @@ h2 {
   font-size: 1rem;
   color: #444;
 }
-
 .cart-list li:last-child {
   border-bottom: none;
 }
-
 .total-container {
   margin-top: 20px;
   font-size: 1.3rem;
@@ -156,7 +134,6 @@ h2 {
   border-top: 2px solid #4a90e2;
   padding-top: 15px;
 }
-
 .btn-print {
   margin-top: 25px;
   padding: 14px 0;
@@ -171,13 +148,10 @@ h2 {
   box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
   user-select: none;
 }
-
 .btn-print:hover {
   background: #1c5dbf;
   box-shadow: 0 6px 20px rgba(28, 93, 191, 0.6);
 }
-
-/* Scrollbar styling for menu and cart lists */
 .menu-list::-webkit-scrollbar,
 .cart-list::-webkit-scrollbar {
   width: 8px;
@@ -191,8 +165,6 @@ h2 {
 .cart-list::-webkit-scrollbar-track {
   background: #f0f2f5;
 }
-
-/* Responsive */
 @media (max-width: 900px) {
   main {
     flex-direction: column;
@@ -205,22 +177,25 @@ h2 {
     margin-bottom: 30px;
   }
 }
-
-/* Impression */
+/* Impression : n'affiche que le ticket */
 @media print {
   body * {
     visibility: hidden !important;
   }
-  #ticket {
+  #ticket,
+  #ticket * {
     visibility: visible !important;
+  }
+  #ticket {
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    padding: 20px;
+    top: 0;
+    width: 100vw;
     background: #fff;
     color: #000;
+    padding: 20px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 9999;
   }
   #ticket h2 {
     border-bottom: 2px solid #000;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>POS Restaurant - Impression ticket</title>
+    <title>POS Restaurant - Impression & PDF</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -26,13 +26,18 @@
           <button class="btn-print" onclick="printTicket()">
             🧾 Imprimer le ticket
           </button>
+          <button class="btn-pdf" onclick="saveTicketPDF()">
+            💾 Enregistrer en PDF
+          </button>
         </section>
       </main>
     </div>
 
-    <!-- Div cachée pour le ticket d'impression -->
+    <!-- Ticket caché pour impression/PDF -->
     <div id="ticket" style="display: none"></div>
 
+    <!-- html2pdf.js pour PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

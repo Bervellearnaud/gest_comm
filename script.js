@@ -41,7 +41,6 @@ function updateCart() {
   const cartList = document.getElementById("cart-list");
   const totalSpan = document.getElementById("total");
   cartList.innerHTML = "";
-
   let total = 0;
   cart.forEach((item) => {
     if (item.qty > 0) {
@@ -56,7 +55,7 @@ function updateCart() {
   totalSpan.textContent = total.toFixed(2);
 }
 
-function printTicket() {
+function getTicketHTML() {
   let html = `<h2>Ticket Restaurant</h2><hr><ul>`;
   let total = 0;
   cart.forEach((item) => {
@@ -68,19 +67,40 @@ function printTicket() {
     }
   });
   if (total === 0) {
-    alert("Veuillez sélectionner au moins un plat avant d'imprimer.");
-    return;
+    html += `<li>Aucun article sélectionné.</li>`;
   }
   html += `</ul><hr><p><strong>Total : ${total.toFixed(2)} €</strong></p>`;
+  return html;
+}
 
+function printTicket() {
   const ticketDiv = document.getElementById("ticket");
-  ticketDiv.innerHTML = html;
-  ticketDiv.style.display = "block"; // Affiche la div ticket avant impression
-
-  // Délai pour que le navigateur rende le contenu avant d'ouvrir la boîte d'impression
+  ticketDiv.innerHTML = getTicketHTML();
+  ticketDiv.style.display = "block";
   setTimeout(() => {
     window.print();
-    ticketDiv.style.display = "none"; // Cache la div après impression
+    ticketDiv.style.display = "none";
+  }, 150);
+}
+
+function saveTicketPDF() {
+  const ticketDiv = document.getElementById("ticket");
+  ticketDiv.innerHTML = getTicketHTML();
+  ticketDiv.style.display = "block";
+  setTimeout(() => {
+    html2pdf()
+      .set({
+        margin: 0.3,
+        filename: "ticket-restaurant.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 4, letterRendering: true, useCORS: true },
+        jsPDF: { unit: "in", format: [3, 5], orientation: "portrait" },
+      })
+      .from(ticketDiv)
+      .save()
+      .then(() => {
+        ticketDiv.style.display = "none";
+      });
   }, 150);
 }
 
